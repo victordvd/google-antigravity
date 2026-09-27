@@ -1,4 +1,4 @@
-# slide11.py — Demo B: Raw Data to Presentation via Conversational Iteration
+# slide13.py — Demo B: Raw Data to Presentation via Antigravity Agent Workflow
 
 from pptx.util import Inches, Pt
 import theme as T
@@ -10,15 +10,15 @@ def build(prs, slide):
 
     title_segments = [
         ("示範 B：從原始資料到多頁簡報，以", {}),
-        ("對話迭代", {"color": T.ORANGE}),
-        ("格式與視覺", {}),
+        ("代理人工作流", {"color": T.ORANGE}),
+        ("自動構建", {}),
     ]
     P.add_argument_title(slide, title_segments, y=T.TITLE_Y)
 
     support_segments = [
-        ("將問卷分析與專案報告轉化為", {}),
-        ("結構化簡報", {"color": T.INK, "bold": True}),
-        ("，直接在對話中微調圖表並匯出至辦公軟體。", {}),
+        ("體驗 Antigravity 原生簡報製作：", {}),
+        ("大綱規劃 → Python 構建 → 視覺驗收", {"color": T.INK, "bold": True}),
+        ("，一氣呵成產出可編輯簡報與聯絡單。", {}),
     ]
     P.add_supporting_sentence(slide, support_segments, y=Inches(1.58))
     P.add_hairline(slide, Inches(2.2))
@@ -26,45 +26,45 @@ def build(prs, slide):
     steps = [
         {
             "num": "STEP 01",
-            "title": "資料脈絡載入",
-            "prompt": "「@滿意度調查.csv 這是本季同仁反饋，請先梳理出主要的資料分佈」",
+            "title": "資料脈絡注入",
+            "prompt": "「@問卷調查.csv 這是中研院同仁反饋，請分析痛點並規劃 5 頁簡報」",
             "details": [
-                "使用 @ 功能精準載入原始資料表格",
+                "鍵入 @ 直接引用本機數據與參考文件",
                 "AI 自主統計回覆筆數、平均分與關鍵詞",
-                "免開 Excel 即可掌握整體統計輪廓",
+                "免開 Excel 即可萃取宏觀洞察與趨勢",
             ],
             "accent": False,
         },
         {
             "num": "STEP 02",
-            "title": "結構大綱生成",
-            "prompt": "「提煉 3 項核心發現，製作 5 頁正式簡報大綱（摘要/現況/建議）」",
+            "title": "結構大綱規劃",
+            "prompt": "「/plan 請擬定 outline.md，明確定義各頁標題、論點與視覺形式」",
             "details": [
-                "AI 依據資料自動擬定章節邏輯架構",
-                "右側 Artifacts 面板即時預覽簡報內容",
-                "將原始數字轉化為清晰的分析論點",
+                "啟動規劃模式先出具章節結構與規格",
+                "嚴格依據黃金圈與敘事邏輯排列頁面",
+                "使用者確認大綱無誤後才批准動手",
             ],
             "accent": False,
         },
         {
             "num": "STEP 03",
-            "title": "對話持續迭代",
-            "prompt": "「第 2 頁改用圓餅圖呈現各單位佔比，語氣改為正式行政風格」",
+            "title": "Python 原生構建",
+            "prompt": "「請調用 python-pptx 構建簡報，嚴格遵循 2pt 格線與暖白配色」",
             "details": [
-                "無需從頭重做，直接用中文指定修改頁面",
-                "動態調整圖表形式、行文語氣與強調重點",
-                "每一次修改即時在輔助面板呈現差異",
+                "AI 自動撰寫 Python 腳本生成可編輯物件",
+                "非死板截圖，文字、圖表均可手動微調",
+                "完全符合中研院簡報設計規範與色系",
             ],
             "accent": True,
         },
         {
             "num": "STEP 04",
-            "title": "原生格式匯出",
-            "prompt": "「將這份簡報轉換為可編輯的 PPTX 格式，並保留原始文字區塊」",
+            "title": "視覺彩現驗收",
+            "prompt": "「導出各頁 PNG 預覽與全覽聯絡單，並轉存 presentation.pdf」",
             "details": [
-                "產出原生 PowerPoint 檔案，非死板截圖",
+                "自動產生單頁預覽圖與 20 頁總覽聯絡單",
+                "免開啟 PowerPoint 即可即時檢驗排版",
                 "支援匯入 Google Slides 供團隊線上協作",
-                "節省 80% 手動排版與格式複製貼上工時",
             ],
             "accent": False,
         },
@@ -94,7 +94,7 @@ def build(prs, slide):
         P.add_hairline(slide, card_y + Inches(1.15), x=x + Inches(0.2), w=card_w - Inches(0.4))
         tb_p, tf_p = P.textbox(slide, x + Inches(0.2), card_y + Inches(1.28), card_w - Inches(0.4), Inches(1.1))
         P.rich_par(tf_p, [("指示範例：\n", {"color": T.MUTED, "mono": True, "size": 11}),
-                          (s["prompt"], {"color": T.INK, "size": 12, "italic": True})], first=True, line=1.15)
+                          (s["prompt"], {"color": T.INK, "size": 11.5, "italic": True})], first=True, line=1.15)
 
         P.add_hairline(slide, card_y + Inches(2.45), x=x + Inches(0.2), w=card_w - Inches(0.4))
 
@@ -103,5 +103,5 @@ def build(prs, slide):
         for j, item in enumerate(s["details"]):
             P.rich_par(tf_d, [
                 ("▸ ", {"color": T.ORANGE if s["accent"] else T.MUTED, "bold": True, "size": 12}),
-                (item, {"color": T.INK_SOFT, "size": 12}),
-            ], first=(j == 0), space_after=7, line=1.15)
+                (item, {"color": T.INK_SOFT, "size": 11.5}),
+            ], first=(j == 0), space_after=6, line=1.15)
