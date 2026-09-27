@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "source_root": ".",
+  "sources": [
+    {
+      "path": "course_plan.md",
+      "kind": "markdown",
+      "sha256": "6431999a95fd816c00a77a146ccbaa1bdc9a4b62abcc9fbce45bf343402d3e50",
+      "content_file": "sources/6431999a95fd-course_plan.md.md",
+      "extractor": "plain-text",
+      "metadata": {}
+    }
+  ]
+}
