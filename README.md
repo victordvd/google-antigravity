@@ -51,6 +51,7 @@
 c:\workspaces\agy\
 ├── README.md                           # 本課程總覽與指引文件（本檔）
 ├── course_plan.md                      # 完整 90 分鐘教學計畫、開場腳本與示範逐字提示詞
+├── slide_story.md                      # ⭐️ 20 頁全套簡報逐頁演講故事與講師口述腳本（Slide Story）
 ├── ui-img/                             # Antigravity 2.0 原生高解析介面截圖庫（10 張）
 │   ├── antigravity.png                 # 桌面視窗全景（左欄、中央畫布、輸入框）
 │   ├── settings-models.png             # 後台模型配額、Gemini 使用進度與超額防護
@@ -71,6 +72,7 @@ c:\workspaces\agy\
     ├── presentation.pptx               # ⭐️ 核心交付物：全套 20 頁原生可編輯投影片
     ├── presentation.pdf                # ⭐️ 核心交付物：高解析 20 頁匯出 PDF
     ├── preview-contact-sheet.png       # ⭐️ 20 頁全簡報縮圖聯絡單（供快速審閱）
+    ├── slide_story.md                  # ⭐️ 20 頁簡報逐頁演講故事與切換指南
     ├── outline.md                      # 簡報 20 頁大綱架構與各頁視覺規範說明書
     ├── edit-impact.md                  # 簡報修改歷程與架構演進紀錄
     ├── preview/                        # 各頁 high-dpi 獨立 PNG 預覽（slide-01 ~ slide-20）
