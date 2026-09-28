@@ -21,3 +21,7 @@ def build(prs, slide):
         date="2026-09",
         title_size=36,
     )
+
+    icon_path = str(T.ASSETS_DIR / "antigravity-icon.png")
+    pic = slide.shapes.add_picture(icon_path, T.MARGIN_X, Inches(1.22), height=Inches(0.85))
+    P.no_shadow(pic)

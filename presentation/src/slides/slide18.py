@@ -1,7 +1,6 @@
-# slide18.py — Governance Deep Dive 1: Plan Review Policy (Always Ask)
+# slide18.py — Governance Slide: 3 Lines of Defense in Agentic Collaboration (Clean Architecture Overview)
 
 from pptx.util import Inches, Pt
-from pptx.enum.shapes import MSO_SHAPE
 import theme as T
 import primitives as P
 
@@ -10,87 +9,93 @@ def build(prs, slide):
     P.add_eyebrow(slide, 4, "BEST PRACTICES")
 
     title_segments = [
-        ("防線一實體設定：計畫審核機制", {"color": T.ORANGE}),
-        ("：以 Always Ask 阻斷非預期檔案異動", {}),
+        ("代理人協作的", {}),
+        ("三大防線", {"color": T.ORANGE}),
+        ("：計畫審核、資料隔離與結果查驗", {}),
     ]
     P.add_argument_title(slide, title_segments, y=T.TITLE_Y)
 
     support_segments = [
-        ("在動手前先看計畫：將", {}),
-        ("Plan Review Policy 設為 Always Ask", {"color": T.INK, "bold": True}),
-        ("，杜絕任何未經確認的本機檔案覆蓋與刪除。", {}),
+        ("在充分享受自動化便利的同時，必須確保", {}),
+        ("資安合規", {"color": T.INK, "bold": True}),
+        ("與", {}),
+        ("學術資料嚴謹性", {"color": T.INK, "bold": True}),
+        ("，築牢風險防線。", {}),
     ]
     P.add_supporting_sentence(slide, support_segments, y=Inches(1.58))
     P.add_hairline(slide, Inches(2.2))
 
-    card_y = Inches(2.45)
-    card_h = Inches(4.55)
-    img_w = Inches(7.2)
-    col_gap = Inches(0.28)
-    info_w = Inches(4.61)
-
-    # ------------------------------------------------------------- Left: Large Annotated Screenshot
-    img_x = T.MARGIN_X
-    img_path = T.ASSETS_DIR / "ui-img" / "settings-general2.png"
-    # settings-general2.png is 1257 x 802 -> scale = 0.005673 -> placed w = 7.13", h = 4.55"
-    P.add_screenshot(slide, str(img_path), img_x, card_y, max_w=img_w, max_h=card_h, frame=True)
-
-    # --- Callout: Plan Review Policy Highlight Box (y ~ 105..220 in 802, x ~ 350..1115 in 1257)
-    box_x = img_x + Inches(1.98)
-    box_y = card_y + Inches(0.60)
-    box_w = Inches(4.35)
-    box_h = Inches(0.65)
-    box = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, box_x, box_y, box_w, box_h)
-    box.fill.background()
-    box.line.color.rgb = T.ORANGE
-    box.line.width = Pt(2.25)
-    P.no_shadow(box)
-    P.add_status_pill(slide, box_x + box_w - Inches(3.40), box_y - Inches(0.28), "★ 關鍵設定：Plan Review Policy = Always Ask",
-                      bg=T.ORANGE, fg=T.ON_DARK, w=Inches(3.35), h=Inches(0.24), size=10)
-
-    # ------------------------------------------------------------- Right: Companion Explanation Panel
-    info_x = img_x + img_w + col_gap
-    P.add_panel(slide, info_x, card_y, info_w, card_h, fill=T.PANEL_BG, line=T.PANEL_LN)
-
-    # Header
-    tb_h, tf_h = P.textbox(slide, info_x + Inches(0.2), card_y + Inches(0.18), info_w - Inches(0.4), Inches(0.28))
-    P.rich_par(tf_h, [
-        ("EXECUTION SAFEGUARD  ·  ", {"color": T.ORANGE, "mono": True, "bold": True, "size": 11}),
-        ("執行把關防線", {"color": T.MUTED, "size": 11}),
-    ], first=True)
-
-    tb_t, tf_t = P.textbox(slide, info_x + Inches(0.2), card_y + Inches(0.48), info_w - Inches(0.4), Inches(0.38))
-    P.rich_par(tf_t, [("堅持「先看計畫再放行」的操作原則", {"color": T.INK, "bold": True, "size": 16})], first=True)
-
-    P.add_hairline(slide, card_y + Inches(0.92), x=info_x + Inches(0.2), w=info_w - Inches(0.4))
-
-    # Notes inside a single contiguous TextFrame to prevent overlapping
-    sections = [
-        ("① Always Ask 的防護機制", [
-            ("強制中斷等待批准", "遇批次檔案移動、刪除或覆蓋，AI 必須停手呈報計畫。"),
-            ("點選 Proceed 始得執行", "只有使用者在介面確認計畫無誤後，代理人才獲准動手。"),
-        ]),
-        ("② 善用 /plan 斜線指令", [
-            ("主動啟動規劃模式", "複雜任務前輸入 /plan，要求 AI 先梳理步驟清單與邊界。"),
-            ("消除 95% 溝通落差", "在投入實際修改前釐清目錄、格式與邏輯，大幅降低試錯成本。"),
-        ]),
-        ("③ 中研院職員最佳實踐", [
-            ("禁止切換為 Never Ask", "日常行政與學術研究嚴禁關閉計畫確認，保持操作透明可稽。"),
-        ]),
+    cards = [
+        {
+            "num": "防線 01",
+            "tag": "執行把關",
+            "title": "永遠先確認計畫再放行",
+            "subtitle": "特別防範涉及檔案移動、覆蓋與刪除的操作",
+            "points": [
+                ("先列清單原則", "下達破壞性或搬遷指令時，要求 AI 先提供預計變更對照表。"),
+                ("善用異動面板", "在 Files Changed 輔助窗格逐一核對異動路徑，確認無誤再放行。"),
+                ("保留原始備份", "執行批次整理前，建議將原始資料夾進行本機封存或快照備份。"),
+            ],
+            "accent": False,
+        },
+        {
+            "num": "防線 02",
+            "tag": "資安紅線",
+            "title": "機密與個人隱私嚴格隔離",
+            "subtitle": "未公開的學術研究資料與個資不上傳雲端",
+            "points": [
+                ("敏感資料不上傳", "涉及人體受試者個資、人事隱私、未公開論文草稿禁止直接上傳。"),
+                ("脫敏演練習慣", "教學與日常測試一律使用脫敏假資料或公開資料集進行演練。"),
+                ("遵循院內規範", "遵循中研院資通安全管理作業準則，確認模型與外網通訊權限。"),
+            ],
+            "accent": True,  # High risk emphasis
+        },
+        {
+            "num": "防線 03",
+            "tag": "嚴謹驗收",
+            "title": "產出資料與引用人工查驗",
+            "subtitle": "AI 擔任提速實習生，最終成果責任在人類",
+            "points": [
+                ("查驗數字統計", "LLM 可能存在計算或幻覺風險，簡報內的關鍵統計務必二次覆核。"),
+                ("點選外部連結", "AI 爬蟲或整理之文獻連結與法規條文，發布前手動抽驗有效性。"),
+                ("人類負責任簽核", "AI 產出之公文簽呈與專案報告，由承辦與研究同仁承擔簽定責任。"),
+            ],
+            "accent": False,
+        },
     ]
 
-    tb_notes, tf_notes = P.textbox(slide, info_x + Inches(0.2), card_y + Inches(1.04),
-                                   info_w - Inches(0.4), card_h - Inches(1.15))
-    first_par = True
-    for s_idx, (s_title, s_points) in enumerate(sections):
-        p_title = P.rich_par(tf_notes, [(s_title, {"color": T.ORANGE, "bold": True, "size": 12.5})],
-                             first=first_par, space_after=4)
-        if s_idx > 0:
-            p_title.space_before = Pt(8)
-        first_par = False
+    card_w = Inches(3.84)
+    card_gap = Inches(0.28)
+    card_y = Inches(2.45)
+    card_h = Inches(4.55)
 
-        for j, (pname, pdesc) in enumerate(s_points):
-            P.rich_par(tf_notes, [
-                (f"▸ {pname}：", {"color": T.INK, "bold": True, "size": 10.5}),
-                (pdesc, {"color": T.INK_SOFT, "size": 10.5}),
-            ], space_after=3 if j < len(s_points) - 1 else 0, line=1.18)
+    for i, c in enumerate(cards):
+        x = T.MARGIN_X + i * (card_w + card_gap)
+        bg = T.ORANGE_SOFT if c["accent"] else T.PANEL_BG
+        border = T.ORANGE if c["accent"] else T.PANEL_LN
+        line_w = Pt(1.5) if c["accent"] else Pt(1.0)
+        P.add_panel(slide, x, card_y, card_w, card_h, fill=bg, line=border, line_w=line_w)
+
+        # Header tag
+        pill_bg = T.RED if c["accent"] else T.INK
+        P.add_status_pill(slide, x + Inches(0.24), card_y + Inches(0.22), c["tag"],
+                          bg=pill_bg, fg=T.ON_DARK, w=Inches(1.1), h=Inches(0.26), size=11)
+
+        tb_n, tf_n = P.textbox(slide, x + Inches(1.45), card_y + Inches(0.22), card_w - Inches(1.7), Inches(0.3))
+        P.rich_par(tf_n, [(c["num"], {"color": T.ORANGE if c["accent"] else T.MUTED, "mono": True, "bold": True, "size": 12})], first=True)
+
+        # Title
+        tb_t, tf_t = P.textbox(slide, x + Inches(0.24), card_y + Inches(0.62), card_w - Inches(0.48), Inches(0.65))
+        P.rich_par(tf_t, [(c["title"], {"color": T.INK, "bold": True, "size": 20})], first=True, space_after=3)
+        P.rich_par(tf_t, [(c["subtitle"], {"color": T.INK_SOFT, "size": 12})], first=False)
+
+        P.add_hairline(slide, card_y + Inches(1.48), x=x + Inches(0.24), w=card_w - Inches(0.48),
+                       color=T.ORANGE if c["accent"] else T.HAIRLINE)
+
+        # Points
+        tb_p, tf_p = P.textbox(slide, x + Inches(0.24), card_y + Inches(1.62), card_w - Inches(0.48), Inches(2.7))
+        for j, (pname, pdesc) in enumerate(c["points"]):
+            P.rich_par(tf_p, [
+                (f"▸ {pname}：", {"color": T.ORANGE if c["accent"] else T.INK, "bold": True, "size": 13}),
+                (pdesc, {"color": T.INK_SOFT, "size": 12}),
+            ], first=(j == 0), space_after=12, line=1.20)

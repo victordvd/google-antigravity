@@ -1,4 +1,4 @@
-# slide17.py — Governance Slide: 3 Lines of Defense in Agentic Collaboration (Clean Architecture Overview)
+# slide17.py — Extensibility Ecosystem: Agent Skills, MCP, and Plugins
 
 from pptx.util import Inches, Pt
 import theme as T
@@ -9,56 +9,54 @@ def build(prs, slide):
     P.add_eyebrow(slide, 4, "BEST PRACTICES")
 
     title_segments = [
-        ("代理人協作的", {}),
-        ("三大防線", {"color": T.ORANGE}),
-        ("：計畫審核、資料隔離與結果查驗", {}),
+        ("超越單次對話：以 ", {}),
+        ("Skills、MCP 與 Plugins", {"color": T.ORANGE}),
+        (" 打造長期專屬生產力", {}),
     ]
     P.add_argument_title(slide, title_segments, y=T.TITLE_Y)
 
     support_segments = [
-        ("在充分享受自動化便利的同時，必須確保", {}),
-        ("資安合規", {"color": T.INK, "bold": True}),
-        ("與", {}),
-        ("學術資料嚴謹性", {"color": T.INK, "bold": True}),
-        ("，築牢風險防線。", {}),
+        ("擺脫單次重複下指令的繁瑣，透過", {}),
+        ("技能沉澱流程、協議連接外部工具、外掛模組化分發", {"color": T.INK, "bold": True}),
+        ("，將 AI 升級為組織級的專屬專家。", {}),
     ]
     P.add_supporting_sentence(slide, support_segments, y=Inches(1.58))
     P.add_hairline(slide, Inches(2.2))
 
     cards = [
         {
-            "num": "防線 01",
-            "tag": "執行把關",
-            "title": "永遠先確認計畫再放行",
-            "subtitle": "特別防範涉及檔案移動、覆蓋與刪除的操作",
+            "num": "架構 01",
+            "tag": "流程沉澱",
+            "title": "Agent Skills (技能庫)",
+            "subtitle": "多步驟 SOP 封裝為標準 Runbook",
             "points": [
-                ("先列清單原則", "下達破壞性或搬遷指令時，要求 AI 先提供預計變更對照表。"),
-                ("善用異動面板", "在 Files Changed 輔助窗格逐一核對異動路徑，確認無誤再放行。"),
-                ("保留原始備份", "執行批次整理前，建議將原始資料夾進行本機封存或快照備份。"),
+                ("漸進加載機制", "平時僅加載名稱與描述，按需喚醒完整指令，大幅節省 Token。"),
+                ("結構化流程包", "包含 SKILL.md 指引、輔助 scripts、範例與自訂驗證步驟。"),
+                ("版本控制共用", "存放於 .agents/skills/，隨專案 Git 簽入，團隊成員開箱即用。"),
             ],
             "accent": False,
         },
         {
-            "num": "防線 02",
-            "tag": "資安紅線",
-            "title": "機密與個人隱私嚴格隔離",
-            "subtitle": "未公開的學術研究資料與個資不上傳雲端",
+            "num": "架構 02",
+            "tag": "工具擴充",
+            "title": "MCP 外部協議",
+            "subtitle": "開放標準通訊連接外部資料與系統",
             "points": [
-                ("敏感資料不上傳", "涉及人體受試者個資、人事隱私、未公開論文草稿禁止直接上傳。"),
-                ("脫敏演練習慣", "教學與日常測試一律使用脫敏假資料或公開資料集進行演練。"),
-                ("遵循院內規範", "遵循中研院資通安全管理作業準則，確認模型與外網通訊權限。"),
+                ("通用開放協議", "支援本機 Stdio 進程與遠端 SSE 串流，安全開放外部工具調用。"),
+                ("串接內部資源", "透過 mcp_config.json 介接院內資料庫、私有 API 或本機系統。"),
+                ("動態工具探索", "啟動自動註冊 Tools 到 AI 工具箱，擺脫手動複製貼上。"),
             ],
-            "accent": True,  # High risk emphasis
+            "accent": True,  # Highlighting MCP as the critical integration bridge
         },
         {
-            "num": "防線 03",
-            "tag": "嚴謹驗收",
-            "title": "產出資料與引用人工查驗",
-            "subtitle": "AI 擔任提速實習生，最終成果責任在人類",
+            "num": "架構 03",
+            "tag": "生態分發",
+            "title": "Plugins (外掛套件)",
+            "subtitle": "模組化整合與團隊一鍵分發大禮包",
             "points": [
-                ("查驗數字統計", "LLM 可能存在計算或幻覺風險，簡報內的關鍵統計務必二次覆核。"),
-                ("點選外部連結", "AI 爬蟲或整理之文獻連結與法規條文，發布前手動抽驗有效性。"),
-                ("人類負責任簽核", "AI 產出之公文簽呈與專案報告，由承辦與研究同仁承擔簽定責任。"),
+                ("全功能打包袋", "以 plugin.json 為核心，整合 Skills、Rules、MCP 與 Hooks。"),
+                ("獨立命名空間", "有效防止跨專案工具與規則命名衝突，權限清晰獨立。"),
+                ("彈性開關管理", "可透過設定介面或 CLI 自由啟用/停用，依專案需求抽換。"),
             ],
             "accent": False,
         },
@@ -77,7 +75,7 @@ def build(prs, slide):
         P.add_panel(slide, x, card_y, card_w, card_h, fill=bg, line=border, line_w=line_w)
 
         # Header tag
-        pill_bg = T.RED if c["accent"] else T.INK
+        pill_bg = T.ORANGE if c["accent"] else T.INK
         P.add_status_pill(slide, x + Inches(0.24), card_y + Inches(0.22), c["tag"],
                           bg=pill_bg, fg=T.ON_DARK, w=Inches(1.1), h=Inches(0.26), size=11)
 

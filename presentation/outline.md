@@ -12,7 +12,7 @@
 - Language: 台灣繁體中文（zh-TW；保留自然英文技術詞）
 - Expected Duration: 90 min（含 43 分鐘螢幕操作示範）
 - User Requested Slide Count: 未指定（由 90 分鐘時長與「一張圖一個 slide」遠端易讀性要求推定）
-- Actual Planned Slide Count: 20
+- Actual Planned Slide Count: 21
 - Assumptions: 學員不需事前安裝環境，簡報作為觀念鋪陳、示範情境引導與規範提示，核心操作以即時螢幕分享進行；簡報需具備清晰的步驟感與高可讀性提示作用
 - Source Inventory: `course_plan.md` → 核心授課大綱、教學目標與示範腳本 · 權威最高
 - Source Conflicts: 無衝突
@@ -30,7 +30,7 @@ Start directly with the friction of repetitive administrative and research tasks
 
 ## Core Narrative
 
-機械性日常工作耗時 → 傳統學程式門檻高、傳統 AI 只能問答 → Vibe Coding 轉換為「用白話描述結果」→ Antigravity 2.0 提供代理人規劃與執行平台（總覽 + 大圖導覽 + 配額設定）→ 三大實務示範驗證日常可行性 → 掌握 Prompt 技巧與防護邊界（總覽 + 計畫審核實體設定 + 沙箱隔離實體設定）→ 立即上手提升效率
+機械性日常工作耗時 → 傳統學程式門檻高、傳統 AI 只能問答 → Vibe Coding 轉換為「用白話描述結果」→ Antigravity 2.0 提供代理人規劃與執行平台（總覽 + 大圖導覽 + 配額設定）→ 三大實務示範驗證日常可行性 → 掌握 Prompt 技巧、擴充生態（Skills/MCP/Plugins）與防護邊界（總覽 + 計畫審核實體設定 + 沙箱隔離實體設定）→ 立即上手提升效率
 
 ## Narrative Review
 
@@ -91,10 +91,11 @@ technical · factual · concise · evidence-oriented · direct · implementation
 14 — Process — 示範 C：公開網站資訊抓取與排程，免寫程式碼也能定期追蹤
 15 — Section Divider — 單元四：最佳實踐：下好 Prompt 與防護安全邊界
 16 — Guideline Table — 提示詞四大關鍵要素：給足角色、背景、格式與限制
-17 — Governance — 代理人協作的三大防線：計畫審核、資料隔離與結果查驗（防禦架構卡片）
-18 — Governance Deep Dive 1 — 防線一實體設定：計畫審核機制：以 Always Ask 阻斷非預期檔案異動（大圖高亮解析：settings-general2.png）
-19 — Governance Deep Dive 2 — 防線二實體設定：安全沙箱等級：堅守 Default 預設沙箱防護隔離（大圖高亮解析：settings-general-security-preset.png）
-20 — Next Steps — 從一件小工作開始嘗試：課後資源與實踐清單
+17 — Extensibility Cards — 超越單次對話：以 Skills、MCP 與 Plugins 打造長期專屬生產力（三欄架構卡片）
+18 — Governance — 代理人協作的三大防線：計畫審核、資料隔離與結果查驗（防禦架構卡片）
+19 — Governance Deep Dive 1 — 防線一實體設定：計畫審核機制：以 Always Ask 阻斷非預期檔案異動（大圖高亮解析：settings-general2.png）
+20 — Governance Deep Dive 2 — 防線二實體設定：安全沙箱等級：堅守 Default 預設沙箱防護隔離（大圖高亮解析：settings-general-security-preset.png）
+21 — Next Steps — 從一件小工作開始嘗試：課後資源與實踐清單
 
 ---
 
@@ -510,7 +511,32 @@ native-table (4 columns: 要素, 核心意義, 不佳示範, 推薦示範)
 
 ---
 
-## Slide 17 — 代理人協作的三大防線：計畫審核、資料隔離與結果查驗
+## Slide 17 — 超越單次對話：以 Skills、MCP 與 Plugins 打造長期專屬生產力
+
+### Slide Role
+Extensibility Architecture
+
+### Purpose
+Bridge from individual prompts to institutionalized capabilities, showing how colleagues can encapsulate complex workflows (Skills), integrate external data/tools (MCP), and distribute them to their teams (Plugins).
+
+### Eyebrow
+// 04    BEST PRACTICES
+
+### Title
+超越單次對話：以 Skills、MCP 與 Plugins 打造長期專屬生產力
+
+### Title Emphasis
+`Skills、MCP 與 Plugins`
+
+### Supporting Sentence
+擺脫單次重複下指令的繁瑣，透過**技能沉澱流程、協議連接外部工具、外掛模組化分發**，將 AI 升級為組織級的專屬專家。
+
+### Visual Form
+three-column-cards (架構 01 Agent Skills / 架構 02 MCP 外部協議 / 架構 03 Plugins 外掛套件)
+
+---
+
+## Slide 18 — 代理人協作的三大防線：計畫審核、資料隔離與結果查驗
 
 ### Slide Role
 Governance Architecture
@@ -535,7 +561,7 @@ three-column-cards (防線 01 永遠先確認計畫再放行 / 防線 02 機密�
 
 ---
 
-## Slide 18 — 防線一實體設定：計畫審核機制：以 Always Ask 阻斷非預期檔案異動
+## Slide 19 — 防線一實體設定：計畫審核機制：以 Always Ask 阻斷非預期檔案異動
 
 ### Slide Role
 Governance Deep Dive 1
@@ -565,7 +591,7 @@ annotated-large-screenshot + companion explanation panel
 
 ---
 
-## Slide 19 — 防線二實體設定：安全沙箱等級：堅守 Default 預設沙箱防護隔離
+## Slide 20 — 防線二實體設定：安全沙箱等級：堅守 Default 預設沙箱防護隔離
 
 ### Slide Role
 Governance Deep Dive 2
@@ -595,7 +621,7 @@ annotated-large-screenshot + companion explanation panel
 
 ---
 
-## Slide 20 — 從一件小工作開始嘗試：課後資源與實踐清單
+## Slide 21 — 從一件小工作開始嘗試：課後資源與實踐清單
 
 ### Slide Role
 Next Steps & Practical Checklist
